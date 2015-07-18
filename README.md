@@ -61,10 +61,9 @@ id пользователя, указав его вместо "{id}" и стат
 
 ## Инструкция для запуска и работы приложения
 (необходимо, чтобы был запущен boot2docker)
----
 1. запускаем MySQL сервер в контейнере:
 ```  
-docker run --name demo-mysql -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=demo -e MYSQL_USER=demo_user -e       MYSQL_PASSWORD=demo_pass -p 3306:3306 -d mysql:5.6
+docker run --name demo-mysql -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=demo -e MYSQL_USER=demo_user -e MYSQL_PASSWORD=demo_pass -p 3306:3306 -d mysql:5.6
 ```
 2. Собираем и создаем image приложения:
 `mvn clean package docker:build`
