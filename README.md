@@ -36,7 +36,9 @@ id пользователя, указав его вместо "{id}" и стат
 - ID пользователя
 - текущий статус (который был указан в запросе)
 - предыдущий статус.
-Внимание! Ответ сервера происходит с искусственной задержкой.<br/>
+<br/>
+Внимание! Ответ сервера происходит с искусственной задержкой.
+<br/>
 5. Получить общую статистику можно, передав по адресу
 `http://192.168.59.103:8080/user/statistic`
 следующие данные:
@@ -64,9 +66,12 @@ id пользователя, указав его вместо "{id}" и стат
 1. запускаем MySQL сервер в контейнере:
 ```  
 docker run --name demo-mysql -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=demo -e MYSQL_USER=demo_user -e       MYSQL_PASSWORD=demo_pass -p 3306:3306 -d mysql:5.6
-```<br/>
+```
+<br/>
 2. Собираем и создаем image приложения:
-```mvn clean package docker:build```<br/>
+`mvn clean package docker:build`
+<br/>
 3. Запускаем приложение в контейнере:
-```docker run -p 8080:8080 --name demo-app --link demo-mysql:mysql -d rest-demo/rest-ful-project```
+`docker run -p 8080:8080 --name demo-app --link demo-mysql:mysql -d rest-demo/rest-ful-project`
+<br/>
 приложение будет запущено на порту: 8080.
