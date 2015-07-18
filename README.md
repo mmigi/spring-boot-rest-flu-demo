@@ -65,7 +65,7 @@ id пользователя, указав его вместо "{id}" и стат
 docker run --name demo-mysql -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=demo -e MYSQL_USER=demo_user -e       MYSQL_PASSWORD=demo_pass -p 3306:3306 -d mysql:5.6
 ```
 2. Собираем и создаем image приложения:
-  `mvn clean package docker:build`
+  ```mvn clean package docker:build```
 3. Запускаем приложение в контейнере:
-  `docker run -p 8080:8080 --name demo-app --link demo-mysql:mysql -d rest-demo/rest-ful-project`
+  ```docker run -p 8080:8080 --name demo-app --link demo-mysql:mysql -d rest-demo/rest-ful-project```
 приложение будет запущено на порту: 8080.
