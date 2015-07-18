@@ -4,40 +4,40 @@
 
 ### Как использовать
 1. Отправить файл(картинку) на сервер можно, передав по адресу 
-http://192.168.59.103:8080/upload 
+  http://192.168.59.103:8080/upload 
 слудющие данные:
-"name" - в формате String
-"file" - в формате MultipartFile
+  "name" - в формате String
+  "file" - в формате MultipartFile
 Сервер вернет URI файла. Данные будут сохранены в таблице pictures.
 2. Добавить нового пользователя на сервер можно, передав по адресу 
-http://192.168.59.103:8080/create 
+  http://192.168.59.103:8080/create 
 слудующие данные:
-"email" в формате String
-"name" в формате String
-"phone" в формате String
-"address" в формате String
-"pictureId" в формате Long
+  "email" в формате String
+  "name" в формате String
+  "phone" в формате String
+  "address" в формате String
+  "pictureId" в формате Long
 Сервер вернет URI пользователя. Данные будут сохранены в таблице users.
 3. получить информацию о пользователе можно, передав по адресу 
-http://192.168.59.103:8080/user/{id}
+  http://192.168.59.103:8080/user/{id}
 id пользователя, указав его вместо "{id}".
 пример:
-http://192.168.59.103:8080/user/2
+  http://192.168.59.103:8080/user/2
 4. Изменить статус пользователя можно, передав по адресу 
-http://192.168.59.103:8080/user/{id}/{status}
+  http://192.168.59.103:8080/user/{id}/{status}
 d пользователя, указав его вместо "{id}" и статус в формате Boolean (true/false), указав его вместо "{status}"
 пример:
-http://192.168.59.103:8080/user/2/true
+  http://192.168.59.103:8080/user/2/true
 Ответ сервера будет содержать:
 - ID пользователя
 - текущий статус (который был указан в запросе)
 - предыдущий статус
 Вниание! Ответ сервера происходит с искусственной задержкой.
 5. Получить общую статистику можно, передав по адресу
-http://192.168.59.103:8080/user/statistic
+  http://192.168.59.103:8080/user/statistic
 следующие данные:
-"status" в формате Boolean (не обязательно)
-"time" В формате: "dd-MM-yyyy-HH-mm-ss" (не обязательно)
+  "status" в формате Boolean (не обязательно)
+  "time" В формате: "dd-MM-yyyy-HH-mm-ss" (не обязательно)
 Ответ сервера будет формироваться в зависимости от переданных ему данных:
 - если не указанно ни одного парамета, то сервер вернет списком статистику по всем пользователям
 - если указан параметр "status", то сервер вернет списком статистику по пользователем с указанным статусом
@@ -55,9 +55,9 @@ http://192.168.59.103:8080/user/statistic
 ## Инструкция для запуска и работы приложения
 (необходимо, чтобы был запущен boot2docker)
 1. запускаем MySQL сервер в контейнере:
-docker run --name demo-mysql -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=demo -e MYSQL_USER=demo_user -e MYSQL_PASSWORD=demo_pass -p 3306:3306 -d mysql:5.6
+  docker run --name demo-mysql -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=demo -e MYSQL_USER=demo_user -e       MYSQL_PASSWORD=demo_pass -p 3306:3306 -d mysql:5.6
 2. Собираем и создаем image приложения:
-mvn clean package docker:build
+  mvn clean package docker:build
 3. Запускаем приложение в контейнере:
-docker run -p 8080:8080 --name demo-app --link demo-mysql:mysql -d rest-demo/rest-ful-project
+  docker run -p 8080:8080 --name demo-app --link demo-mysql:mysql -d rest-demo/rest-ful-project
 приложение будет запущено на порту: 8080.
